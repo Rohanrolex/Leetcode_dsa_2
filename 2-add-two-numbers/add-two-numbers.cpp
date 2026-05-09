@@ -21,7 +21,7 @@ public:
         while(l1!=NULL || l2!=NULL || carry){
             int sum = carry;
 
-            if(l1!=NULL){
+            if(l1 !=NULL){
                sum+= l1->val;
                l1 = l1->next;
             }
