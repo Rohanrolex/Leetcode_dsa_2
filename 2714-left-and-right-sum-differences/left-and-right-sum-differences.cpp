@@ -3,7 +3,7 @@ public:
     vector<int> leftRightDifference(vector<int>& nums) {
         int n = nums.size();
 
-        vector<int> prefix(n, 0);
+        vector<int>prefix(n,0);
         vector<int> suffix(n, 0);
         vector<int> ans(n);
 
