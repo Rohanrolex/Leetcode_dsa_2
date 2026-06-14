@@ -21,7 +21,7 @@ public:
         int n = arr.size();
         int maxtwinsum = 0;
 
-        for(int i=0 ;i<n ;i++){
+        for(int i=0 ;i<n/2 ;i++){
             int sum = arr[i]+arr[n-1-i];
             maxtwinsum = max(maxtwinsum , sum);
         }
