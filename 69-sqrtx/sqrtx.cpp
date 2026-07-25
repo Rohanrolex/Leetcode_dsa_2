@@ -7,7 +7,7 @@ int ans = 0;
           while(low<=  high){
             long long mid = (low+high)/2;
         if((mid *mid) <= x){
-            if(ans < mid) ans =mid;
+             ans =mid;
 
            low = mid+1;
         }
