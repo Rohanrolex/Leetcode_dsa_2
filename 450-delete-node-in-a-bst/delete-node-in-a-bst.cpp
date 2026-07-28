@@ -15,31 +15,40 @@ public:
 
     TreeNode* deleteNode(TreeNode* root, int key) {
 
-    if (!root) return NULL;
+   if (root == NULL)
+    return NULL;
 
-    if (key < root->val) {
-        root->left = deleteNode(root->left, key);
-    }
-    else if (key > root->val) {
-        root->right = deleteNode(root->right, key);
-    }
-    else {
-        // no child
-        if (!root ->left && !root->right) return NULL;
+if (key < root->val) {
+    root->left = deleteNode(root->left, key);
+}
+else if (key > root->val) {
+    root->right = deleteNode(root->right, key);
+}
+else {
 
-        // one child
-        if (!root->left) return root->right;
-        if (!root->right) return root->left;
+    // Leaf node
+    if (root->left == NULL && root->right == NULL)
+        return NULL;
 
-        // two children: use inorder successor (min of right subtree)
-        TreeNode* t = root->right;
-        while (t->left) t = t->left;
-        root->val = t->val;
-        root->right = deleteNode(root->right, t->val);
-    }
-    return root;
+    // Only right child
+    if (root->left == NULL)
+        return root->right;
+
+    // Only left child
+    if (root->right == NULL)
+        return root->left;
+
+    // Two children
+    TreeNode* t = root->right;
+    while (t->left != NULL)
+        t = t->left;
+
+    root->val = t->val;
+    root->right = deleteNode(root->right, t->val);
 }
 
-    
+return root;
+
+    } 
 
 };
