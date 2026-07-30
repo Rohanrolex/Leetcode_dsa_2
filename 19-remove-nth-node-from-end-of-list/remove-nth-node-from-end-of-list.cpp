@@ -3,22 +3,29 @@ public:
   
 
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        if (!head) return nullptr;
-    ListNode* dummy = new ListNode(0);  
-     dummy->next = head;
-    ListNode* fast = dummy;
-    ListNode* slow = dummy;
- 
+    ListNode* fast = head;
+    ListNode * slow = head;
 
-    for(int i =0 ;i<=n;i++){
-        fast = fast->next;
+    for(int i =0 ;i<n ;i++) fast = fast->next;
+
+
+if (fast == NULL) {
+            ListNode* temp = head;
+            head = head->next;
+            delete temp;
+            return head;
+        }
+        
+    while(fast->next != NULL){
+        fast= fast->next;
+        slow = slow->next;
     }
 
-    while(fast != NULL){
-       fast = fast->next;
-       slow = slow->next;
-    }
+    ListNode* delNode = slow->next;
     slow->next = slow->next->next;
-       return dummy->next;
+   delete delNode;
+
+    return head;
     }
+       
 };
