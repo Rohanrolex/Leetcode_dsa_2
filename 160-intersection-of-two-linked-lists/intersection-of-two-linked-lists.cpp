@@ -25,7 +25,7 @@ public:
             a = a->next;
         }
 
-        if(b == NULL){
+        if(b  == NULL){
             b= headA;
         }else{
             b = b->next;
