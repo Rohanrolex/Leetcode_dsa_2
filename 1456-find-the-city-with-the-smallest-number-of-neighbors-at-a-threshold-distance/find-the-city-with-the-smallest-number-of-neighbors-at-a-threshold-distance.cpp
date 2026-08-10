@@ -12,7 +12,7 @@ public:
 
          //floyd warshal
 
-         for(int via =0 ;via <n ;via++){
+         for(int via = 0 ;via<n ;via++){
             for(int i =0 ;i<n ;i++){
                 for(int j =0 ;j<n ;j++){
                     if(dist[i][via] == INT_MAX || dist[via][j] == INT_MAX) continue;
