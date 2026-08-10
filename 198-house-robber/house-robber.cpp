@@ -1,20 +1,18 @@
 class Solution {
 public:
+
+  int sol(int ind , vector<int>& arr , vector<int>& dp){
+      if(ind == 0) return arr[0];
+      
+      if(ind < 0) return 0;
+      if(dp[ind]  != -1) return dp[ind];
+      int pick = arr[ind] + sol(ind-2 ,arr,dp);
+      int notpick = 0 + sol(ind-1,arr,dp);
+      return  dp[ind] = max(pick, notpick);
+  }
     int rob(vector<int>& nums) {
         int n =nums.size();
-           vector<int>dp(n);
-
-           dp[0] = nums[0];
-
-           for(int i =1 ;i<n ;i++){
-             
-             int take = nums[i];
-             if(i > 1) take+= dp[i-2];
-
-             int nontake = 0 + dp[i-1];
-
-             dp[i] = max(take, nontake);
-           }
-return dp[n-1];
+        vector<int>dp(n ,-1);
+        return sol(n-1, nums,dp);
     }
 };
