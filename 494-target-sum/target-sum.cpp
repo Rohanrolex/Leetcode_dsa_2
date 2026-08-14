@@ -14,11 +14,11 @@ public:
         if (dp[index][sum + offset] != -1)
             return dp[index][sum + offset];
 
-        // Take '+'
+        
         int plus = solve(index + 1, nums,
                          sum + nums[index], target, dp);
 
-        // Take '-'
+       
         int minus = solve(index + 1, nums,
                           sum - nums[index], target, dp);
 
@@ -29,7 +29,6 @@ public:
 
         int n = nums.size();
 
-        // sum can be from -1000 to +1000
         vector<vector<int>> dp(n, vector<int>(2001, -1));
 
         return solve(0, nums, 0, target, dp);
