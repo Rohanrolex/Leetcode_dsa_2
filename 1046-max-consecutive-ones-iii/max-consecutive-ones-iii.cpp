@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+
+        int maxlen = 0;
+        int l = 0;
+        int r = 0;
+        int n = nums.size();
+        int count = 0;
+
+        while(r < n) {
+
+            if(nums[r] == 1) {
+                maxlen = max(maxlen, r - l + 1);
+            }
+
+            if(nums[r] == 0) {
+
+                count++;
+
+                if(count <= k) {
+                    maxlen = max(maxlen, r - l + 1);
+                }
+                else {
+
+                    while(nums[l] != 0) {
+                        l++;
+                    }
+
+                    l++;
+                    count--;
+                }
+            }
+
+            r++;
+        }
+
+        return maxlen;
+    }
+};
