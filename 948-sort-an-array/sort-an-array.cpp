@@ -1,58 +1,52 @@
 class Solution {
 public:
+  int partitionIndex(vector<int>& nums , int low , int high){
+
+int pivot = nums[low];
+
+int i = low;
+int j = high;
 
 
-void margesort(vector<int>& arr , int low , int  mid, int high){
-  vector<int>temp;
+while(i < j){
 
-  int left = low;
-  int right = mid+1;
+ while(nums[i] <= pivot && i<high){
+    i++;
+ }
+ while(nums[j] > pivot && j>low){
+    j--;
+ }
 
-  while(left <= mid && right<=high){
-     if(arr[left] <= arr[right]){
-        temp.push_back(arr[left]);
-        left++;
-     }
-     else{
-     temp.push_back(arr[right]);
-     right++;
-     }
-  }
-
-  while(left <= mid){
-     temp.push_back(arr[left]);
-        left++;
-  }
-
-  while(right <= high){
-     temp.push_back(arr[right]);
-        right++;
-  }
+ if(i < j) swap(nums[i] , nums[j]);
 
 
-  for(int i = low ;i<=high ;i++){
-     arr[i] = temp[i-low];
-  }
-
-       
 }
 
-void marge(vector<int>& nums , int low , int high){
+swap(nums[j] , nums[low]);
 
-    if(low == high) return; //means single ele comes
+return j;
 
-    int mid = (low+high)/2;
 
-    marge(nums , low, mid);
-    marge(nums , mid+1, high);
+  }
 
-    margesort(nums, low, mid , high);
-}
+  void quicksort(vector<int>& nums , int low , int high){
+      if(low < high){
+        int partition = partitionIndex(nums, low , high);
+
+        quicksort(nums , low , partition-1);
+        quicksort(nums, partition+1, high);
+      }
+
+  }
+
+    
+
+
 
     vector<int> sortArray(vector<int>& nums) {
           int n = nums.size();
 
-           marge(nums, 0 , n-1);
+           quicksort(nums, 0 , n-1);
            return nums;
     }
 };
