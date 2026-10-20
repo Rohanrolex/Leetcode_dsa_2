@@ -8,7 +8,8 @@ vector<int>rowprint(int row){
     temp.push_back(1);
 
     for(int col = 1 ; col <=row ;col++){
-       ans = ans * (row-col+1) / col;
+       ans = ans * (row-col+1);
+       ans = ans/col;
 
         temp.push_back(ans);
     }
